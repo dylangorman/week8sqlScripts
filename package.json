@@ -1,0 +1,15 @@
+{
+  "name": "week8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "docker run --rm --name master32new-mysql -dp 3306:3306 -v mysql-config:/etc -v mysql-data:/var/lib/mysql mysql/mysql-server:latest",
+    "start": "docker ps",
+    "poststart": "docker stop master32new-mysql",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
