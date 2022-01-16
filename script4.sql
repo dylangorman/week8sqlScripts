@@ -17,6 +17,8 @@ DELETE FROM master32new.great_names WHERE employee_id = 1001;
 	
 #EXTENSIONS
 #1) Recreate your table with an extra column called great_name_ind
+
+-- my solution
 #DROP TABLE master32new.great_names 
 CREATE TABLE master32new.great_names(
 name VARCHAR(64),
@@ -24,6 +26,11 @@ employee_id INT PRIMARY KEY,
 great_name_ind VARCHAR(64)
 );
 
+-- Neals solution
+ALTER TABLE master32new.great_names
+ADD COLUMN great_name_ind VARCHAR(1);
+
+-- my solution
 #EXT #2
 INSERT INTO master32new.great_names  (employee_id,name,great_name_ind)
 #VALUES (1001,'Joe','Y');
@@ -32,8 +39,12 @@ INSERT INTO master32new.great_names  (employee_id,name,great_name_ind)
 #VALUES (1004,'Charlotte','Y');
 #VALUES (1005,'Katie','Y');
 
+-- neals solotion
+UPDATE great_names SET great_name_ind = "Y";
+
 
 #EXT 3
 UPDATE master32new.great_names 
 SET great_name_ind = 'N'
 WHERE employee_id = 1001
+
