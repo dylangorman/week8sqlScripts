@@ -18,8 +18,6 @@ GROUP BY job_title;
 #MAX - shows maximum of data
 #SUM - Sums data up
 
-
-
 SELECT job_title, COUNT(*)
 FROM master32new.current_job_detail cjd 
 GROUP BY job_title;
@@ -29,7 +27,7 @@ GROUP BY job_title;
 -- #1) Return a table linking laptop_detail and current_job_detail
 SELECT * FROM master32new.laptop_detail ld 
 INNER JOIN master32new.current_job_detail cjd 
--- #1 neal
+-- #1 neil
 SELECT * FROM laptop_detail_csv ldc 
 INNER JOIN current_job_detail_csv cjdc 
 ON ldc.laptop_id = cjdc.laptop_id;
@@ -56,7 +54,7 @@ INNER JOIN master32new.current_job_detail cjd
 ON jh.employee_id = cjd.employee_id 
 WHERE jh.job_title NOT LIKE '%eveloper%' AND cjd.job_title LIKE '%eveloper%';
 
--- neals solution
+-- neils solution
 SELECT * FROM jobs_history jh
 INNER JOIN jobs_history jh2
 INNER JOIN employee_detail ed
@@ -78,28 +76,28 @@ INNER JOIN master23new.jobs_history jh
 ON cjd.employee_id = jh.employee_id
 WHERE jh.job_title != cjd.job_title;
 
-#ACTIVITIES PAGE 90
-#1) Return a table of the max salary by job type
+-- #ACTIVITIES PAGE 90
+-- #1) Return a table of the max salary by job type
 SELECT job_title, MAX(salary) FROM  master32new.current_job_detail cjd
 GROUP BY job_title;
 
-#2) Return a table counting how many people have each OS
+-- #2) Return a table counting how many people have each OS
 SELECT job_title, os, COUNT(os) FROM master32new.current_job_detail cjd
 INNER JOIN master32new.laptop_detail ld
 ON cjd.laptop_id  = ld.laptop_id 
 GROUP BY job_title, os;
 
-#3) Return a table of the average salary of staff members that have at
-#some point been an apprentice developer
+-- #3) Return a table of the average salary of staff members that have at
+-- #some point been an apprentice developer
 SELECT cjd.job_title, AVG(salary) FROM master32new.current_job_detail cjd 
 INNER JOIN master32new.jobs_history jh 
 ON cjd.employee_id = jh.employee_id
 WHERE jh.job_title = 'Apprentice Developer' 
 GROUP by job_title ;
 
-#Extension
-#1) Return a row of data containing the name of the person with the
-#highest salary (don’t just eyeball the table and select an employee id) 
+-- #Extension
+-- #1) Return a row of data containing the name of the person with the
+-- #highest salary (don’t just eyeball the table and select an employee id) 
 
 SELECT name
 FROM master32new.employee_detail ed
@@ -108,7 +106,7 @@ ON cjd.employee_id = ed.employee_ID
 ORDER BY cjd.salary DESC 
 LIMIT 1;
 
-2) Do the same for the highest salary by job type
+-- 2) Do the same for the highest salary by job type
 
 SELECT job_title
 FROM master32new.current_job_detail cjd
